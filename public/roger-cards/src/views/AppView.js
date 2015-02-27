@@ -3,22 +3,17 @@ define(function(require, exports, module) {
   var Surface = require('famous/core/Surface');
   var Transform = require('famous/core/Transform');
   var StateModifier = require('famous/modifiers/StateModifier');
-  var CardView = require('views/CardView');
+  var DeckView = require('views/DeckView');
   var ImageSurface = require('famous/surfaces/ImageSurface');
 
   function AppView() {
     View.apply(this, arguments);
 
-    var deckModifier = new StateModifier({
-      align: [0, 0.6],
-      transform: Transform.translate(10, 0, 10)
+    var deckView = new DeckView({
+      cardData: [0,1,2]
     });
 
-    var cardView = new CardView({
-      screenWidth: window.screen.availWidth - this.options.padding * 2
-    });
-
-    this.add(deckModifier).add(cardView);
+    this.add(deckView);
   };
 
   AppView.prototype = Object.create(View.prototype);
